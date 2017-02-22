@@ -1,11 +1,9 @@
 
 const Pushover = require('node-pushover');
 const client = require('mqtt').connect('mqtt://192.168.188.26');
+const credentials = require('./credentials');
 
-const push = new Pushover({
-  token: 'aosy7vfwcc1empem5my4zm9v8432e9',
-  user: 'uuaypd1aaw6h3xoei12j1zu28gogdu'
-})
+const push = new Pushover(credentials)
 
 client.subscribe('/office/door/bell');
 client.on('message', (topic, message) => {
